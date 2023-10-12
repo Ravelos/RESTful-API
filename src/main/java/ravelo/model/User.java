@@ -1,16 +1,24 @@
 package ravelo.model;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity(name = "tb-user")
 public class User {
+    @GeneratedValue(strategy = GenerationType.AUTO.IDENTITY)
     private Long id;
     private String name;
+
+    @OneToOne(cascade = CascadeType.ALL)
     private Account account;
+
+    @OneToOne(cascade = CascadeType.ALL)
     private Card card;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Feature> features;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<News> news;
 
     public Long getId() {
