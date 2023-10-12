@@ -1,5 +1,7 @@
 package ravelo.model;
 
-public class News {
-    private Long id;
+import jakarta.persistence.Entity;
+
+@Entity(name = "tb_news")
+public class News extends BaseItem{
 }
